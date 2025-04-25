@@ -7,7 +7,8 @@ import { createNoise2D } from 'simplex-noise'
     const geometry = new THREE.PlaneGeometry(3000, 3000, 100, 100);
 
     // 生产随机顶点数据
-    // 使用噪声算法，生产随机数；注意放在函数外面
+    // 使用噪声算法，生产随机但连续的数，让生成的山脉看起来更加平滑
+    // 注意放在函数外面
     const noise2D = createNoise2D();
     // 此函数在render函数中调用
     function updatePosition() {
@@ -17,11 +18,13 @@ import { createNoise2D } from 'simplex-noise'
             const x = positions.getX(i);
             const y = positions.getY(i);
             const z = noise2D(x / 300, y / 300) * 50;
-            // 使用sin函数和当前时间，生成随机数
-            const sinNum = Math.sin(Date.now() * 0.002  + x * 0.05) * 5;
+            // 使用 sin 函数和当前时间，生成随机数
+            // 加上 x * 0.01 的原因是为了让Z轴数字变化不一样，防止整体同上同下
+            const sinNum = Math.sin(Date.now() * 0.001  + x * 0.01) * 5;
     
             positions.setZ(i, z + sinNum);
         }
+        // positions可更新
         positions.needsUpdate = true;
     }
     
@@ -50,7 +53,9 @@ import { createNoise2D } from 'simplex-noise'
     renderer.setSize(width, height)
 
     function render() {
-        updatePosition()
+        updatePosition();
+        // 让mesh按照Z轴进行旋转，因为mesh是在xy平面上的
+        mesh.rotateZ(0.001);
         renderer.render(scene, camera);
         requestAnimationFrame(render);
     }
