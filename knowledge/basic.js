@@ -16,7 +16,9 @@ import { GUI } from 'three/addons/libs/lil-gui.module.min.js';
     // First Mesh
     const geometry = new THREE.BoxGeometry(100, 100, 100);
     const material = new THREE.MeshLambertMaterial(({
-        color: new THREE.Color('orange')
+        // 支持多种颜色方式HSL,HEX,RGBA等
+        color: new THREE.Color('orange'),
+        opacity: 0.5,
     }));
     const mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(0, 0, 0);
