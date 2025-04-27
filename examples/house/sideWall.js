@@ -10,6 +10,19 @@ const pointArr = [
 
 const shape = new THREE.Shape(pointArr);
 
+const pathPoint = [
+    new THREE.Vector2(-600, 400),
+    new THREE.Vector2(-600, 1600),
+    new THREE.Vector2(-2400, 1600),
+    new THREE.Vector2(-2400, 400)
+];
+const path = new THREE.Path(pathPoint);
+// path.moveTo(-600, 400);
+// path.lineTo(-600, 1600);
+// path.lineTo(-2400, 1600);
+// path.lineTo(-2400, 400);
+shape.holes.push(path);
+
 const geometry = new THREE.ExtrudeGeometry(shape, {
     depth: 100,
 })

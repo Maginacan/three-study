@@ -11,4 +11,8 @@ sideWall.translateZ(2000);
 sideWall.translateY(-150);
 houseMesh.add(sideWall)
 
+const sideWall2 = sideWall.clone();
+sideWall2.translateZ(-4000);
+houseMesh.add(sideWall2)
+
 export default houseMesh;
