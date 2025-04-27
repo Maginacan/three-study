@@ -1,34 +1,27 @@
-// 使用规律进行几何体生成
-
 import * as THREE from 'three';
 import {
     OrbitControls
 } from 'three/addons/controls/OrbitControls.js';
-import latheGeometryMesh from './geometry/LatheGeometry.js'
-import tubeGeometrymesh from './geometry/TubeGeometry.js'
+import houseMesh from './houseMesh.js';
 
 const scene = new THREE.Scene();
+scene.add(houseMesh);
 
-scene.add(latheGeometryMesh);
-scene.add(tubeGeometrymesh);
-
-// 平行光源
 const directionLight = new THREE.DirectionalLight(0xffffff);
-directionLight.position.set(100, 100, 100);
+directionLight.position.set(3000, 3000, 3000);
 scene.add(directionLight);
 
-// 增加环境光，环境光会均匀的照亮场景中的所有物体。
 const ambientLight = new THREE.AmbientLight();
 scene.add(ambientLight);
 
-const axesHelper = new THREE.AxesHelper(200);
+const axesHelper = new THREE.AxesHelper(20000);
 scene.add(axesHelper);
 
 const width = window.innerWidth;
 const height = window.innerHeight;
 
 const camera = new THREE.PerspectiveCamera(60, width / height, 1, 10000);
-camera.position.set(200, 200, 200);
+camera.position.set(3000, 3000, 3000);
 camera.lookAt(0, 0, 0);
 
 const renderer = new THREE.WebGLRenderer();
