@@ -10,7 +10,6 @@ import {
 import mesh from './mesh.js';
 
 const scene = new THREE.Scene();
-scene.name = 'group'
 
 // // 直接将mesh添加到scene中
 // scene.add(mesh);
@@ -19,6 +18,7 @@ scene.name = 'group'
 
 // 将mesh添加到group中
 const group = new THREE.Group();
+mesh.name = 'group'
 group.add(mesh);
 scene.add(group);
 group.position.x = 200;
@@ -45,8 +45,20 @@ const axesHelper2Group = new THREE.AxesHelper(1000);
 group.add(axesHelper2Group);
 
 // scene.scale.set(0.1,0.1,0.1);
-console.log('scene', scene);
-console.log('group', group);
+// console.log('scene', scene);
+// console.log('group', group);
+
+scene.traverse((obj) => {
+    console.log('obj', obj);
+    if(obj.isMesh) {
+        obj.material.color = new THREE.Color('pink');
+    }
+})
+
+// 如果想找某个名字的对象，可以使用 getObjectByName api来查找
+// getObjectById 是根据id查找
+const groupScene = scene.getObjectByName('group');
+groupScene.material.color = new THREE.Color('lightgreen');
 
 const width = window.innerWidth;
 const height = window.innerHeight;
