@@ -13,7 +13,9 @@ import {
 // import { mesh, light } from './DirectionalLight.js';
 // import { mesh, light } from './PointLight.js';
 // import { mesh, light } from './AmbientLight.js';
-import { mesh, light } from './SpotLight.js';
+// import { mesh, light } from './SpotLight.js';
+// import { mesh, light } from './HemisphereLight.js';
+import { mesh, light } from './RectAreaLight.js';
 
 const scene = new THREE.Scene();
 scene.add(mesh, light);
