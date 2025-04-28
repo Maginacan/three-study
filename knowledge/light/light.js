@@ -12,7 +12,8 @@ import {
 } from 'three/addons/controls/OrbitControls.js';
 // import { mesh, light } from './DirectionalLight.js';
 // import { mesh, light } from './PointLight.js';
-import { mesh, light } from './AmbientLight.js';
+// import { mesh, light } from './AmbientLight.js';
+import { mesh, light } from './SpotLight.js';
 
 const scene = new THREE.Scene();
 scene.add(mesh, light);
