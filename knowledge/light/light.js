@@ -10,7 +10,8 @@ import * as THREE from 'three';
 import {
     OrbitControls
 } from 'three/addons/controls/OrbitControls.js';
-import { mesh, light } from './DirectionalLight .js';
+// import { mesh, light } from './DirectionalLight.js';
+import { mesh, light } from './PointLight.js';
 
 const scene = new THREE.Scene();
 scene.add(mesh, light);
