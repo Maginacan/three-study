@@ -19,7 +19,7 @@ import {
     ])
     gemetry.attributes.uv = new THREE.BufferAttribute(uvs,2);
     const loader = new THREE.TextureLoader();
-    const texture = loader.load("../assets/bg.png");
+    const texture = loader.load("../../assets/bg.png");
     texture.colorSpace = THREE.SRGBColorSpace;
     texture.wrapS = THREE.RepeatWrapping;
     const material = new THREE.MeshBasicMaterial({

@@ -11,7 +11,7 @@ import * as THREE from 'three';
 import {
     OrbitControls
 } from 'three/addons/controls/OrbitControls.js';
-import shapeGeometryMesh from './shape/ShapeGeometry.js'
+import shapeGeometryMesh from './ShapeGeometry.js'
 
 const scene = new THREE.Scene();
 

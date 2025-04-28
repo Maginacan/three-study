@@ -44,7 +44,7 @@ import {
     // scene.add(mesh);
 
     // 砖
-    const textureZhuan = loader.load('../assets/zhuan.jpg');
+    const textureZhuan = loader.load('../../assets/zhuan.jpg');
     // 水平方向
     textureZhuan.wrapS = THREE.RepeatWrapping;
     // 垂直方向

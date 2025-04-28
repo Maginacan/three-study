@@ -4,8 +4,8 @@ import * as THREE from 'three';
 import {
     OrbitControls
 } from 'three/addons/controls/OrbitControls.js';
-import latheGeometryMesh from './geometry/LatheGeometry.js'
-import tubeGeometrymesh from './geometry/TubeGeometry.js'
+import latheGeometryMesh from './LatheGeometry.js'
+import tubeGeometrymesh from './TubeGeometry.js'
 
 const scene = new THREE.Scene();
 

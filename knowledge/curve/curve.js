@@ -1,11 +1,11 @@
 // 曲线
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import ellipseCurveLine from './curve/EllipseCurve.js'
-import splineCurveLine from './curve/SplineCurve.js'
-import quadraticBezierCurveline from './curve/QuadraticBezierCurve.js'
-import cubicBezierCurve3line from './curve/CubicBezierCurve3.js'
-import curveLine from './curve/CurvePath.js'
+import ellipseCurveLine from './EllipseCurve.js'
+import splineCurveLine from './SplineCurve.js'
+import quadraticBezierCurveline from './QuadraticBezierCurve.js'
+import cubicBezierCurve3line from './CubicBezierCurve3.js'
+import curveLine from './CurvePath.js'
 
 {
     const scene = new THREE.Scene();
