@@ -53,7 +53,7 @@ outlinePass.pulsePeriod  = 1;
 // 增加发光效果
 const bloomPass = new UnrealBloomPass(new THREE.Vector2(width, height), 1.5, 0.4, 0.85);
 bloomPass.threshold = 0;
-bloomPass.strength = 0; // 发光强度
+bloomPass.strength = 1; // 发光强度
 bloomPass.radius = 0;
 composer.addPass(bloomPass);
 
@@ -86,9 +86,9 @@ renderer.domElement.addEventListener('click', (e) => {
     outlinePass.selectedObjects = [intersections[0].object];
     selectedObject = intersections[0].object;
     // 增加发光强度
-    // selectedObject.material.emissiveIntensity = 1;
-    selectedObject.material.emissive.set(0x00ff00); 
-    selectedObject.material.needsUpdate = true;
+    selectedObject.material.emissiveIntensity = 1;
+    // selectedObject.material.emissive.set(0x00ff00); 
+    // selectedObject.material.needsUpdate = true;
     // 选中时增加发光效果
     // if(!composer.passes.includes(bloomPass)) {
     //     composer.addPass(bloomPass);
