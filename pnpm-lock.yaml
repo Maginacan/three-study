@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@tweenjs/tween.js':
+        specifier: ^25.0.0
+        version: 25.0.0
       fs-extra:
         specifier: ^11.3.0
         version: 11.3.0

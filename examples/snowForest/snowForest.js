@@ -4,6 +4,7 @@ import {
 } from 'three/addons/controls/OrbitControls.js';
 import mountainside from './mountainside.js';
 import snow from './snow.js';
+import { Tween, Easing } from '@tweenjs/tween.js';
 
 const scene = new THREE.Scene();
 
@@ -37,13 +38,21 @@ renderer.shadowMap.enabled = true;
 renderer.setClearColor('darkblue');
 
 // 增加相机旋转效果
-let angle = 0;
+// let angle = 0;
 let c = 1000;
+const tween = new Tween({ angle: 0})
+            .to({ angle: Math.PI * 2 }, 10000)
+            .onUpdate((obj) => {
+                camera.position.x = c * Math.sin(obj.angle);
+                camera.position.z = c * Math.cos(obj.angle);
+                camera.lookAt(0, 0, 0);
+            })
+            .easing(Easing.Quadratic.InOut)
+            .repeat(Infinity)
+            .start();
 function render() {
-    angle += 0.01;
-    camera.position.x = c * Math.sin(angle);
-    camera.position.z = c * Math.cos(angle);
-    camera.lookAt(0, 0, 0);
+    tween.update();
+
     renderer.render(scene, camera);
     requestAnimationFrame(render);
 };
