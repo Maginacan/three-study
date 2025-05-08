@@ -10,8 +10,9 @@ const scene = new THREE.Scene();
 
 scene.add(mesh);
 
+
 const axesHelper = new THREE.AxesHelper(50);
-scene.add(axesHelper);
+// scene.add(axesHelper);
 
 const width = window.innerWidth;
 const height = window.innerHeight;
@@ -33,3 +34,7 @@ render();
 document.body.append(renderer.domElement);
 
 const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = false;
+controls.enablePan = false;
+controls.enableRotate = false;
+controls.enableZoom = false;
