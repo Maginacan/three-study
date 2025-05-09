@@ -1,7 +1,7 @@
 export default function createCanvas (text) {
     const canvas = document.createElement('canvas');
-    const w = canvas.width - 80;
-    const h = canvas.height - 50;
+    const w = canvas.width = 80;
+    const h = canvas.height = 50;
     const c = canvas.getContext('2d');
     c.fillStyle = '#fff';
     c.fillRect(0, 0, w, h);
