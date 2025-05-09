@@ -2,8 +2,8 @@ import * as THREE from 'three';
 import {
     OrbitControls
 } from 'three/addons/controls/OrbitControls.js';
-import { Easing, Group, Tween } from 'three/examples/jsm/libs/tween.module.js';
 import mesh from './mesh.js';
+import { Easing, Group, Tween } from 'three/examples/jsm/libs/tween.module.js';
 
 const scene = new THREE.Scene();
 scene.add(mesh);
@@ -19,13 +19,14 @@ const width = window.innerWidth;
 const height = window.innerHeight;
 
 const camera = new THREE.PerspectiveCamera(60, width / height, 0.1, 10000);
-camera.position.set(0, 0, 800);
+camera.position.set(500, 600, 800);
 camera.lookAt(0, 0, 0);
 
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(width, height)
 
 const tweenGroup = new Group();
+
 function render() {
     tweenGroup.update();
     renderer.render(scene, camera);
@@ -56,32 +57,18 @@ renderer.domElement.addEventListener('click', (e) => {
   
     const intersections = rayCaster.intersectObjects(mesh.children);
     
-    const obj = intersections[0].object;
     if(intersections.length) {
-      mesh.traverse((child) => {
-        // child.position.x = 0;
-        // child.position.y = 0;
+      const obj = intersections[0].object.target;
+
+      mesh.traverse(obj => {
+        // obj.position.x = 0;
+        // obj.position.y = 0;
         if(obj.isSprite) {
             return;
         }
-        const tween = new Tween(child.position).to({
+        const tween = new Tween(obj.position).to({
             x: 0,
-            y: 0,
-        }, 500)
-        .easing(Easing.Quadratic.InOut)
-        .repeat(0)
-        .onComplete(() => {
-            tweenGroup.remove(tween)
-        })
-        .start();
-        tweenGroup.add(tween);
-      });
-
-    }
-
-    const tween = new Tween(obj.position).to({
-            x: 100 * Math.cos(obj.angle),
-            y: 100 * Math.sin(obj.angle)
+            y: 0
           }, 500)
           .easing(Easing.Quadratic.InOut)
           .repeat(0)
@@ -90,4 +77,18 @@ renderer.domElement.addEventListener('click', (e) => {
           })
           .start();
           tweenGroup.add(tween);
+      });
+
+      const tween = new Tween(obj.position).to({
+        x: 100 * Math.cos(obj.angle),
+        y: 100 * Math.sin(obj.angle)
+      }, 500)
+      .easing(Easing.Quadratic.InOut)
+      .repeat(0)
+      .onComplete(() => {
+        tweenGroup.remove(tween)
+      })
+      .start();
+      tweenGroup.add(tween);
+    }
 });
